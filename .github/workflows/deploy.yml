@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.cxoxa.mongodb.net
-      MONGODB_USERNAME: velrajan2004
-      MONGODB_PASSWORD: M7rMuQuQF3M9ncTR
+      # MONGODB_USERNAME: velrajan2004
+      # MONGODB_PASSWORD: M7rMuQuQF3M9ncTR
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}      
       PORT: 8080   
     steps:
       - name: Get Code
@@ -40,5 +42,6 @@ jobs:
           PORT: 3000
         run:  |        
           echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+          echo "MONGODB_DB_NAME1: ${{env.MONGODB_DB_NAME}}"
           echo "MONGODB_USERNAME: ${{env.MONGODB_USERNAME}}"
           echo "${{ env.PORT }}"
